@@ -13,10 +13,20 @@ export async function test(
   callback: () => void | Promise<void>
 ): Promise<void> {
   try {
-    await callback();
     console.log(`✅ ${description}`);
+    await Promise.resolve(callback());
   } catch (error) {
     console.log(`❌ ${description}`);
     console.log(error);
   }
+}
+
+export const it = test;
+
+export async function describe(
+  description: string,
+  callback: () => Promise<void> | void
+): Promise<void> {
+  console.log(description);
+  await Promise.resolve(callback());
 }

@@ -1,20 +1,16 @@
+import { expect, test } from "./test-lib";
 import { average, sum } from "./stats";
-let result: number, expected: number;
-result = sum([1, 2, 3]);
-expected = 6;
 
-if (result === expected) {
-  console.log("✅ Pass! ");
-} else {
-  throw Error(`❌ Expected ${expected} but received ${result}`);
-}
+test("calculates the sum of all numbers", () => {
+  const result = sum([1, 2, 3]);
+  const expected = 6;
 
-result = average([1, 2, 3]);
-expected = 2;
+  expect(expected).toBe(result);
+});
 
-if (result === expected) {
-  console.log("✅ Pass! ");
-} else {
-  throw Error(`❌ Expected ${expected} but received ${result}`);
-}
+test("calculates the average of all numbers", () => {
+  const result = average([1, 2, 3]);
+  const expected = 2;
 
+  expect(expected).toBe(result);
+});
